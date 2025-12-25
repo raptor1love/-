@@ -235,7 +235,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: center; /* Центрируем навигацию */
+            justify-content: center;
             align-items: center;
             height: 70px;
             padding: 0 20px;
@@ -387,10 +387,6 @@
                 height: 300px;
             }
 
-            .navbar {
-                padding: 0 15px;
-            }
-
             .nav-container {
                 padding: 0 15px;
                 justify-content: space-between;
@@ -402,7 +398,7 @@
             }
 
             .nav-links {
-                display: none; /* Скрываем навигацию на мобильных, можно добавить бургер-меню */
+                display: none;
             }
 
             .mobile-menu-btn {
@@ -450,69 +446,57 @@
             <div class="logo">BrandName</div>
             <ul class="nav-links">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="HomePage.html" class="nav-link">
                         Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="AboutUs.html" class="nav-link">
                         About us
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="Service.html" class="nav-link">
                         Service
                     </a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Web Design</a>
-                        <a href="#" class="dropdown-item">Development</a>
-                        <a href="#" class="dropdown-item">Marketing</a>
-                        <a href="#" class="dropdown-item dropdown-submenu">
+                        <a href="DetailService.html" class="dropdown-item">Detail Service</a>
+                        <a href="development.html" class="dropdown-item">Development</a>
+                        <a href="marketing.html" class="dropdown-item">Marketing</a>
+                        <a href="more-services.html" class="dropdown-item dropdown-submenu">
                             More Services <i class="fas fa-chevron-right"></i>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">SEO</a>
-                                <a href="#" class="dropdown-item">Social Media</a>
-                                <a href="#" class="dropdown-item">Content</a>
+                                <a href="seo.html" class="dropdown-item">SEO</a>
+                                <a href="social-media.html" class="dropdown-item">Social Media</a>
+                                <a href="content.html" class="dropdown-item">Content</a>
                             </div>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="pages.html" class="nav-link">
                         Page <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">About Us</a>
-                        <a href="#" class="dropdown-item">Our Team</a>
-                        <a href="#" class="dropdown-item">Testimonials</a>
-                        <a href="#" class="dropdown-item dropdown-submenu">
+                        <a href="PricePlan.html" class="dropdown-item">Pricing List</a>
+                        <a href="OurTeam.html" class="dropdown-item">Our Team</a>
+                        <a href="Pagess.html" class="dropdown-item dropdown-submenu">
                             More Pages <i class="fas fa-chevron-right"></i>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">FAQ</a>
-                                <a href="#" class="dropdown-item">Gallery</a>
-                                <a href="#" class="dropdown-item">Contact</a>
+                                <a href="FAQ.html" class="dropdown-item">FAQ</a>
+                                <a href="ContactUs.html" class="dropdown-item">Contact Us</a>
                             </div>
                         </a>
-                        <a href="#" class="dropdown-item">Portfolio</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="Blog.html" class="nav-link">
                         Blog <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Latest Posts</a>
-                        <a href="#" class="dropdown-item">Categories</a>
-                        <a href="#" class="dropdown-item dropdown-submenu">
-                            Blog Types <i class="fas fa-chevron-right"></i>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">News Blog</a>
-                                <a href="#" class="dropdown-item">Tutorial Blog</a>
-                                <a href="#" class="dropdown-item">Personal Blog</a>
-                            </div>
-                        </a>
-                        <a href="#" class="dropdown-item">Archive</a>
-                        <a href="#" class="dropdown-item">Write for Us</a>
+                        <a href="DetailBlog.html" class="dropdown-item">Detail Blog</a>
+                        <a href="OurTeam.html" class="dropdown-item">Our Team</a>
+                        <a href="PrivacyPolicy.html" class="dropdown-item">Privacy Policy</a>
                     </div>
                 </li>
             </ul>
@@ -526,8 +510,10 @@
     <div class="main-content">
         <h1>Welcome to Our Website</h1>
         <p>This is a modern website with animated gradient blurs and a centered navigation panel with dropdown menus.</p>
-        <p>The navigation includes links to Home, About us, Service (without arrow), Page (with dropdown), and Blog (with dropdown and arrow).</p>
-        <p>The background features animated gradient blurs with colors #0CBAF1 (blue) and #E95CE9 (pink) on a dark #18181B background.</p>
+        <p>The navigation includes links to different HTML files for each page and section.</p>
+        <p>To make this work, create the following HTML files in the same folder:</p>
+        
+        <p>Each link in the navigation now points to a specific HTML file. Create these files with your content.</p>
     </div>
 
 </body>
