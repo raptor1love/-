@@ -1,19 +1,534 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 
 <head>
-<title>
-    <h1>
-        Page Not Found
-    </h1>
-    
-</title>
-<p>
-    Oops! It looks like the page you were looking for is not here. Here are some possible reasons why:
-</p>
+    <title>Сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #18181B;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: #ffffff;
+        }
+
+        /* Контейнер для всех бликов */
+        .blur-spots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(120px);
+            opacity: 0.2;
+        }
+
+        /* Общие стили для всех бликов */
+        .blur-spot {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at center,
+                rgba(12, 186, 241, 0.7) 0%,
+                rgba(233, 92, 233, 0.7) 50%,
+                transparent 80%);
+        }
+
+        /* Блик 1 - Большой в левом верхнем углу */
+        .blur-spot:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -150px;
+            left: -150px;
+            animation: float-1 25s infinite ease-in-out;
+            background: radial-gradient(circle at center,
+                rgba(12, 186, 241, 0.8) 0%,
+                rgba(233, 92, 233, 0.6) 60%,
+                transparent 80%);
+        }
+
+        /* Блик 2 - В правом верхнем углу */
+        .blur-spot:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            animation: float-2 30s infinite ease-in-out;
+            animation-delay: -5s;
+            background: radial-gradient(circle at center,
+                rgba(233, 92, 233, 0.7) 0%,
+                rgba(12, 186, 241, 0.5) 50%,
+                transparent 75%);
+        }
+
+        /* Блик 3 - В центре слева */
+        .blur-spot:nth-child(3) {
+            width: 350px;
+            height: 350px;
+            top: 40%;
+            left: 10%;
+            animation: float-3 35s infinite ease-in-out;
+            animation-delay: -10s;
+        }
+
+        /* Блик 4 - В центре справа */
+        .blur-spot:nth-child(4) {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            right: 15%;
+            animation: float-4 28s infinite ease-in-out;
+            animation-delay: -15s;
+        }
+
+        /* Блик 5 - Внизу по центру */
+        .blur-spot:nth-child(5) {
+            width: 450px;
+            height: 450px;
+            bottom: -150px;
+            left: 30%;
+            animation: float-5 32s infinite ease-in-out;
+            animation-delay: -8s;
+            background: radial-gradient(circle at center,
+                rgba(12, 186, 241, 0.6) 0%,
+                rgba(233, 92, 233, 0.8) 55%,
+                transparent 85%);
+        }
+
+        /* Блик 6 - Маленький в центре */
+        .blur-spot:nth-child(6) {
+            width: 200px;
+            height: 200px;
+            top: 30%;
+            right: 30%;
+            animation: float-6 40s infinite linear;
+            animation-delay: -20s;
+            opacity: 0.4;
+        }
+
+        /* Анимации для каждого блика */
+        @keyframes float-1 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(100px, 50px) scale(1.1);
+            }
+            50% {
+                transform: translate(50px, 100px) scale(0.95);
+            }
+            75% {
+                transform: translate(-50px, 50px) scale(1.05);
+            }
+        }
+
+        @keyframes float-2 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-80px, 60px) scale(1.15);
+            }
+            66% {
+                transform: translate(-40px, -40px) scale(0.9);
+            }
+        }
+
+        @keyframes float-3 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(120px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(60px, 80px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-60px, 40px) rotate(270deg);
+            }
+        }
+
+        @keyframes float-4 {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            20% {
+                transform: translate(-60px, -40px);
+            }
+            40% {
+                transform: translate(-100px, 20px);
+            }
+            60% {
+                transform: translate(-40px, 60px);
+            }
+            80% {
+                transform: translate(20px, -20px);
+            }
+        }
+
+        @keyframes float-5 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-100px, -50px) scale(1.2);
+            }
+            66% {
+                transform: translate(50px, -80px) scale(0.85);
+            }
+        }
+
+        @keyframes float-6 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(40px, 60px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-60px, 30px) rotate(180deg);
+            }
+            75% {
+                transform: translate(20px, -40px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* Эффект пульсации для всего фона */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .blur-spots {
+            animation: pulse 15s infinite ease-in-out;
+        }
+
+        /* Навигационная панель */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(24, 24, 27, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* Центрируем навигацию */
+            align-items: center;
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 40px;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #0CBAF1, #E95CE9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link:hover {
+            color: #0CBAF1;
+        }
+
+        .nav-link i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .nav-link i {
+            transform: rotate(180deg);
+        }
+
+        /* Выпадающее меню */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            min-width: 200px;
+            background: rgba(39, 39, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 24px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #0CBAF1;
+            padding-left: 30px;
+        }
+
+        /* Второй уровень выпадающего меню */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            left: 100%;
+            top: -10px;
+            margin-left: 5px;
+            transform: translateY(10px);
+        }
+
+        .dropdown-submenu:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Основной контент */
+        .main-content {
+            position: relative;
+            z-index: 2;
+            padding: 120px 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #0CBAF1, #E95CE9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #A1A1AA;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            .blur-spot {
+                filter: blur(80px);
+            }
+            
+            .blur-spot:nth-child(1),
+            .blur-spot:nth-child(2),
+            .blur-spot:nth-child(5) {
+                width: 300px;
+                height: 300px;
+            }
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .logo {
+                position: static;
+                margin-right: auto;
+            }
+
+            .nav-links {
+                display: none; /* Скрываем навигацию на мобильных, можно добавить бургер-меню */
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .main-content {
+                padding: 100px 20px 40px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Font Awesome для иконок стрелок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Блики фона -->
+    <div class="blur-spots">
+        <div class="blur-spot"></div>
+        <div class="blur-spot"></div>
+        <div class="blur-spot"></div>
+        <div class="blur-spot"></div>
+        <div class="blur-spot"></div>
+        <div class="blur-spot"></div>
+    </div>
+
+    <!-- Навигационная панель -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">BrandName</div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        About us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Service
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Web Design</a>
+                        <a href="#" class="dropdown-item">Development</a>
+                        <a href="#" class="dropdown-item">Marketing</a>
+                        <a href="#" class="dropdown-item dropdown-submenu">
+                            More Services <i class="fas fa-chevron-right"></i>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">SEO</a>
+                                <a href="#" class="dropdown-item">Social Media</a>
+                                <a href="#" class="dropdown-item">Content</a>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Page <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">About Us</a>
+                        <a href="#" class="dropdown-item">Our Team</a>
+                        <a href="#" class="dropdown-item">Testimonials</a>
+                        <a href="#" class="dropdown-item dropdown-submenu">
+                            More Pages <i class="fas fa-chevron-right"></i>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">FAQ</a>
+                                <a href="#" class="dropdown-item">Gallery</a>
+                                <a href="#" class="dropdown-item">Contact</a>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">Portfolio</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Blog <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Latest Posts</a>
+                        <a href="#" class="dropdown-item">Categories</a>
+                        <a href="#" class="dropdown-item dropdown-submenu">
+                            Blog Types <i class="fas fa-chevron-right"></i>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">News Blog</a>
+                                <a href="#" class="dropdown-item">Tutorial Blog</a>
+                                <a href="#" class="dropdown-item">Personal Blog</a>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">Archive</a>
+                        <a href="#" class="dropdown-item">Write for Us</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <h1>Welcome to Our Website</h1>
+        <p>This is a modern website with animated gradient blurs and a centered navigation panel with dropdown menus.</p>
+        <p>The navigation includes links to Home, About us, Service (without arrow), Page (with dropdown), and Blog (with dropdown and arrow).</p>
+        <p>The background features animated gradient blurs with colors #0CBAF1 (blue) and #E95CE9 (pink) on a dark #18181B background.</p>
+    </div>
 
 </body>
 </html>
